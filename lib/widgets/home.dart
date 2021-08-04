@@ -96,15 +96,20 @@ class _CalculationPageState extends State<CalculationPage> {
                   style: ElevatedButton.styleFrom(
                     primary: Color.fromRGBO(80, 100, 900, 1),
                     onPrimary: Colors.white70,
-                    elevation: 6, shadowColor: Colors.teal,
+                    elevation: 6,
+                    shadowColor: Colors.teal,
                   ),
-                  child: Text('Calculate'),
+                  child: Text('Calculate Now'),
                   onPressed: () {}),
 
-              SizedBox(height: 15,),
+              SizedBox(
+                height: 15,
+              ),
 
               // Weight Imperial
-              SizedBox( width: 200, height: 50,
+              SizedBox(
+                width: 200,
+                height: 50,
                 child: Row(
                   children: [
                     Text('Weight'),
@@ -129,9 +134,13 @@ class _CalculationPageState extends State<CalculationPage> {
                 ),
               ),
 
-              SizedBox(height: 15,),
+              SizedBox(
+                height: 15,
+              ),
 
-              SizedBox( width: 200, height: 50,
+              SizedBox(
+                width: 200,
+                height: 50,
                 child: Row(
                   children: [
                     Text('Height'),
@@ -159,15 +168,15 @@ class _CalculationPageState extends State<CalculationPage> {
                       width: 40,
                       height: 15,
                       child: TextField(
-                        decoration: InputDecoration(
-                          hintText: ' inch',
-                        )
-                      ),
+                          decoration: InputDecoration(
+                        hintText: ' inch',
+                      )),
                     ),
                     Text(heightImpr2),
                   ],
                 ),
               ),
+
             ],
           ),
         ),

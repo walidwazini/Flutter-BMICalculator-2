@@ -1,3 +1,6 @@
+import 'package:bmi_calculator_2/widgets/metric.dart';
+import 'package:bmi_calculator_2/widgets/test1.dart';
+import 'package:bmi_calculator_2/widgets/test2.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -15,6 +18,8 @@ class _CalculationPageState extends State<CalculationPage> {
   var heightImpr1 = 'ft';
   var heightImpr2 = 'inch';
 
+  bool selection = true;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -26,72 +31,15 @@ class _CalculationPageState extends State<CalculationPage> {
         child: Center(
           child: Column(
             children: [
+              Row(
+                children: [ selection ? Test2() : Test1()],
+              ),
               Text('BMI Calculator'),
+              buildSwitch123(),
               SizedBox(
                 height: 50,
               ),
-              SizedBox(
-                height: 30,
-              ),
-
-              // -----------   Weight Metrics
-              SizedBox(
-                width: 200,
-                height: 50,
-                child: Row(
-                  children: [
-                    Text('Weight'),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    SizedBox(
-                      width: 100,
-                      height: 15,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: ' Your weight',
-                        ),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      ),
-                    ),
-                    Text(weightMetric),
-                  ],
-                ),
-              ),
-              SizedBox(
-                height: 30,
-              ),
-
-              // -----------   Height Metrics
-              SizedBox(
-                width: 200,
-                height: 50,
-                child: Row(
-                  children: [
-                    Text('Height'),
-                    SizedBox(
-                      width: 10,
-                    ),
-                    SizedBox(
-                      width: 100,
-                      height: 15,
-                      child: TextField(
-                        decoration: InputDecoration(
-                          hintText: ' Your Height',
-                        ),
-                        keyboardType: TextInputType.number,
-                        inputFormatters: [
-                          FilteringTextInputFormatter.digitsOnly
-                        ],
-                      ),
-                    ),
-                    Text(heightMetric),
-                  ],
-                ),
-              ),
+              MetricCard(),
               ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     primary: Color.fromRGBO(80, 100, 900, 1),
@@ -176,11 +124,21 @@ class _CalculationPageState extends State<CalculationPage> {
                   ],
                 ),
               ),
-
             ],
           ),
         ),
       ),
     );
   }
+
+  Widget buildSwitch123()=> Transform.scale(
+      scale: 1,
+      child: Switch.adaptive(
+          thumbColor: MaterialStateProperty.all(Colors.red),
+          trackColor: MaterialStateProperty.all(Colors.orange),
+          value: selection,
+          onChanged: (value) => setState(() => this.selection = value)
+      ),
+    );
+
 }
